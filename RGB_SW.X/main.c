@@ -6,6 +6,9 @@
     Simple RGB LED + Switches demo for dsPIC33CH Curiosity board
     Press S1 to turn-on RED, S2 to GREEN and S3 to BLUE of RGB LED
     or combination of S1, S3, S3
+ 
+    Additionally LED1 and LED2 are blinking using TMR1 to show that CPU
+    is alive.
 
   @Description
     This source file provides main entry point for system initialization and application code development.
@@ -45,10 +48,19 @@
 #include "mcc_generated_files/mcc.h"
 
 
+static void TMR1_CallBack(void)
+{
+    LED1_Toggle();
+    LED2_Toggle();
+}
+
 int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
+    LED1_SetHigh();
+    LED2_SetLow();
+    TMR1_SetInterruptHandler(&TMR1_CallBack);
     while (1)
     {
         // NOTE: Switches are active in 0! (negative logic)

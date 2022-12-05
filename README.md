@@ -42,6 +42,6 @@ Here is brief overview of I/O peripherals on Curiosity board - excluding DC/DC c
 # Project list
 
 * [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
-  BLUE channel. Uses Master core only.
+  BLUE channel. Additionally LED1 and LED2 are blinking to show that program is alive. Uses Master core only.
 
 
