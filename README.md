@@ -44,8 +44,16 @@ Here is brief overview of I/O peripherals on Curiosity board - excluding DC/DC c
 * [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
   BLUE channel. Additionally LED1 and LED2 are blinking to show that program is alive. Uses Master core only.
   - used components:
-    - TMR1 (Timer1 module), period 250 ms - for blinkings LED1 and LED2
+    - TMR1 (Timer1 module), period 250 ms - for blinkings LED1 and LED2 - complementary
     - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
     - 5 GPIO Outputs: LED1, LED2, RGB LED
+* [ADC_PWM.X](ADC_PWM.X) - project goal: read potentiometer value using ADC, output variable
+  brightness to LED1 and LED2 using PWM
+  - used components
+    - TMR1 (Timer1 module), period 250 ms - for blinkings LED1 and LED2 - in sync
+    - ADC1 Input - to read Potentiometer value
+    - PWM1 Output to RB14 Blue LED (and RB15 but that is unused)
+    - UART1 Output to PC, 9600Baud, 8-bit,1-stop, no-parity
+  - WORK IN PROGRESS
 
 
