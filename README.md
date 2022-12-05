@@ -15,7 +15,7 @@ Software Requirements:
 - MPLAB X IDE `v5.50`
   > WARNING! Version v6.05 freezes right when Slave project is added to Master!
   > From that point even killing it and running again will not help - it will freeze again!
-- DFP: `dsPIC33CH-MP_DFP `v1.7.194`
+- DFP: `dsPIC33CH-MP_DFP v1.7.194`
 - XC16 `v.20`
 
 # Curiosity board Notes
@@ -26,7 +26,7 @@ Please note that you when you create new project you need to select:
   project you have to select same CPU with `S1` (Slave) suffix
 - Tool: `Starter Kits (PKOB)-SN:BURxxx` (you need to have your Curiosity board 
 
-Here is brief overview of I/O peripherals - excluding DC/DC converter parts:
+Here is brief overview of I/O peripherals on Curiosity board - excluding DC/DC converter parts:
 
 | Peripheral | dsPIC33CH pin and/or port |
 | --- | --- |
@@ -39,11 +39,9 @@ Here is brief overview of I/O peripherals - excluding DC/DC converter parts:
 | LED2 red | RE1 |
 | 10kOhm pot | RA0 |
 
-
-
 # Project list
 
-* [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1,S3,S3 to turn on RGB LED - RED, GREEN or
+* [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
   BLUE channel. Uses Master core only.
 
 
