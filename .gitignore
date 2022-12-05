@@ -1,0 +1,17 @@
+*.swp
+*.tmp
+*.bak
+~*
+
+dist/
+build/
+debug/
+production/
+private/
+disassembly/
+Package-*
+Makefile-*
+# track MCC generated files so your has no need to run it...
+#mcc_generated_files/
+.generated_files/
+
