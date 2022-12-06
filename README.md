@@ -56,8 +56,11 @@ you have to make following adjustment in MCC Tool:
     - TMR1 (Timer1 module), period 250 ms - for blinking LED1 and LED2 - complementary
     - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
     - 5 GPIO Outputs: LED1, LED2, RGB LED
-* [ADC_PWM.X](ADC_PWM.X) - project goal: read potentiometer value using ADC, output variable
-  brightness to LED1 and LED2 using PWM
+* [ADC_PWM.X](ADC_PWM.X)
+  - ADC + PWM Example: read potentiometer value using ADC and set RGB LED (Blue) brightness
+    using PWM
+  - additionally LED1 & LED2 are synchronously blinking each second using TMR1 to show
+    that board is alive
   - used components
     - `TMR1` (Timer1 module), period 250 ms - for blinking LED1 and LED2 - in sync
     - `ADC1` Input - to read Potentiometer value

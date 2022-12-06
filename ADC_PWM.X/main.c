@@ -1,14 +1,10 @@
 /**
-  Generated main.c file from MPLAB Code Configurator
-
-  @Company
-    Microchip Technology Inc.
-
   @File Name
     main.c
 
   @Summary
-    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
+    ADC and PWM demo - set brightness of RGB Blue LED 
+    using PWM based on potentiometer value read with ADC
 
   @Description
     This source file provides main entry point for system initialization and application code development.
@@ -21,6 +17,7 @@
 */
 
 /*
+    (c) Henryk Paluch, based on:
     (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
     software and any derivatives exclusively with Microchip products.
 
