@@ -1,23 +1,23 @@
 /**
-  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Header File
+  Generated main.c file from MPLAB Code Configurator
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    mcc.h
+  @File Name
+   SLAVE main.c
 
-  @Summary:
-    This is the mcc.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
+  @Summary
+    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
 
-  @Description:
-    This file will be removed in future MCC releases. Use system.h instead.
+  @Description
+    This source file provides main entry point for system initialization and application code development.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.171.1
-        Device            :  dsPIC33CH512MP508
+        Device            :  dsPIC33CH512MP508S1
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.70
-        MPLAB             :  MPLAB X v5.50
+        MPLAB 	          :  MPLAB X v5.50
 */
 
 /*
@@ -42,29 +42,25 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "system.h"
-#include "clock.h"
-#include "pin_manager.h"
-#include <stdint.h>
-#include <stdbool.h>
-#include "system_types.h"
-#include "reset.h"
+/**
+  Section: Included Files
+*/
+#include "mcc_generated_files/system.h"
 
-#include "tmr1.h"
-#include "reset.h"
-#include "slave_typedef.h"
-#include "slave1.h"
-#include "watchdog.h"
-#include "pwm.h"
-#include "interrupt_manager.h"
-#include "traps.h"
-
-#warning "This file will be removed in future MCC releases. Use system.h instead."
-
-#endif	/* MCC_H */
+/*
+                         Main application
+ */
+int main(void)
+{
+    // initialize the device
+    SYSTEM_Initialize();
+    while (1)
+    {
+        // Add your application code
+    }
+    return 1; 
+}
 /**
  End of File
 */
+

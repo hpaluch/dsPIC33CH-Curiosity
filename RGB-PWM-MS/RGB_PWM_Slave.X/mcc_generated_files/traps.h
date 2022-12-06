@@ -1,25 +1,25 @@
 /**
-  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Header File
+  System Traps Generated Driver File 
 
   @Company:
     Microchip Technology Inc.
 
   @File Name:
-    mcc.h
+    traps.h
 
   @Summary:
-    This is the mcc.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
+    This is the generated driver implementation file for handling traps
+    using PIC24 / dsPIC33 / PIC32MM MCUs
 
   @Description:
-    This file will be removed in future MCC releases. Use system.h instead.
-    Generation Information :
+    This source file provides implementations for PIC24 / dsPIC33 / PIC32MM MCUs traps.
+    Generation Information : 
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.171.1
-        Device            :  dsPIC33CH512MP508
+        Device            :  dsPIC33CH512MP508S1
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.70
         MPLAB             :  MPLAB X v5.50
 */
-
 /*
     (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
     software and any derivatives exclusively with Microchip products.
@@ -42,29 +42,49 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "system.h"
-#include "clock.h"
-#include "pin_manager.h"
+#ifndef _TRAPS_H
+#define _TRAPS_H
+
 #include <stdint.h>
-#include <stdbool.h>
-#include "system_types.h"
-#include "reset.h"
 
-#include "tmr1.h"
-#include "reset.h"
-#include "slave_typedef.h"
-#include "slave1.h"
-#include "watchdog.h"
-#include "pwm.h"
-#include "interrupt_manager.h"
-#include "traps.h"
-
-#warning "This file will be removed in future MCC releases. Use system.h instead."
-
-#endif	/* MCC_H */
 /**
- End of File
+ * Error codes
+ */
+typedef enum 
+{
+    /* ----- Traps ----- */
+    TRAPS_OSC_FAIL = 0, /** Oscillator Fail Trap vector */
+    TRAPS_STACK_ERR = 1, /** Stack Error Trap Vector */
+    TRAPS_ADDRESS_ERR = 2, /** Address error Trap vector */
+    TRAPS_MATH_ERR = 3, /** Math Error Trap vector */
+    TRAPS_HARD_ERR = 7, /** Generic Hard Trap vector */
+    TRAPS_NVM_ERR = 12, /** Generic Soft Trap vector */
+    TRAPS_DAE_ERR = 9, /** Generic Soft Trap vector */
+    TRAPS_DOOVR_ERR = 10, /** Generic Soft Trap vector */
+    TRAPS_APLL_ERR = 11, /** Generic Soft Trap vector */
+} TRAPS_ERROR_CODE;
+/**
+  @Summary
+    Default handler for the traps
+
+  @Description
+    This routine will be called whenever a trap happens. It stores the trap
+    error code and waits forever.
+    This routine has a weak attribute and can be over written.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    None.
+
 */
+void TRAPS_halt_on_error(uint16_t code);
+
+#endif

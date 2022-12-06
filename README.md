@@ -84,5 +84,5 @@ you have to make following adjustment in MCC Tool:
     - RGB LED, BLUE Channel, pin `RP46/PWM1H/RB14` - PWM usable from Master
     - RGB LED, GREEN Channel, pin `S1RP71/S1PWM8H/S1RD7` - PWM usable from Slave only
     - RGB LED, RED Channel, pin `S1RP69/S1PWM6L/S1RD5` - PWM usable from Slave only
-
+  - status: Master/Slave init works, but Green and Blue are constant so far...
 

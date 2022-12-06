@@ -1,20 +1,20 @@
 /**
-  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Header File
+  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Source File
 
   @Company:
     Microchip Technology Inc.
 
   @File Name:
-    mcc.h
+    system.h
 
   @Summary:
-    This is the mcc.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
+    This is the sysetm.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
 
   @Description:
-    This file will be removed in future MCC releases. Use system.h instead.
+    This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.171.1
-        Device            :  dsPIC33CH512MP508
+        Device            :  dsPIC33CH512MP508S1
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.70
         MPLAB             :  MPLAB X v5.50
@@ -42,29 +42,28 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "system.h"
-#include "clock.h"
-#include "pin_manager.h"
-#include <stdint.h>
-#include <stdbool.h>
-#include "system_types.h"
-#include "reset.h"
+// Configuration bits: selected in the GUI
 
-#include "tmr1.h"
-#include "reset.h"
-#include "slave_typedef.h"
-#include "slave1.h"
-#include "watchdog.h"
-#include "pwm.h"
+#include "pin_manager.h"
+#include "clock.h"
+#include "system.h"
+#include "system_types.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "pwm.h"
+#include "master.h"
 
-#warning "This file will be removed in future MCC releases. Use system.h instead."
+void SYSTEM_Initialize(void)
+{
+    PIN_MANAGER_Initialize();
+    INTERRUPT_Initialize();
+    CLOCK_Initialize();
+    MASTER_Initialize();
+    PWM_Initialize();
+    INTERRUPT_GlobalEnable();
+    SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);
+}
 
-#endif	/* MCC_H */
 /**
  End of File
 */

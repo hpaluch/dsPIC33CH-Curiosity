@@ -5,7 +5,7 @@
     Microchip Technology Inc.
 
   @File Name
-    main.c
+    MASTER main.c
 
   @Summary
     This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
@@ -75,6 +75,10 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
+     //Program and enable slave 
+    SLAVE1_Program(); 
+    SLAVE1_Start(); 
+      
     TMR1_Start();
     LED1_SetHigh();
     LED2_SetHigh();

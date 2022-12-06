@@ -16,7 +16,7 @@
     This source file provides implementations for PIN MANAGER.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.171.1
-        Device            :  dsPIC33CH512MP508
+        Device            :  dsPIC33CH512MP508S1
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.70
         MPLAB 	          :  MPLAB X v5.50
@@ -71,10 +71,10 @@ void PIN_MANAGER_Initialize (void)
      * Setting the GPIO Direction SFR(s)
      ***************************************************************************/
     TRISA = 0x001F;
-    TRISB = 0x3FFD;
+    TRISB = 0xFFFF;
     TRISC = 0xFFFF;
-    TRISD = 0xFF5F;
-    TRISE = 0xFFFC;
+    TRISD = 0xFF1B;
+    TRISE = 0xFFFF;
 
     /****************************************************************************
      * Setting the Weak Pull Up and Weak Pull Down SFR(s)
@@ -103,7 +103,7 @@ void PIN_MANAGER_Initialize (void)
      * Setting the Analog/Digital Configuration SFR(s)
      ***************************************************************************/
     ANSELA = 0x001F;
-    ANSELB = 0x0386;
+    ANSELB = 0x039E;
     ANSELC = 0x00CF;
     ANSELD = 0x7C00;
     ANSELE = 0x0040;

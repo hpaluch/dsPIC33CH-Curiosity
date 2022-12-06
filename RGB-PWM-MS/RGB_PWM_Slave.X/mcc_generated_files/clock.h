@@ -1,20 +1,20 @@
 /**
-  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Header File
+  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Source File
 
   @Company:
     Microchip Technology Inc.
 
   @File Name:
-    mcc.h
+    clock.h
 
   @Summary:
-    This is the mcc.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
+    This is the clock.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
 
   @Description:
-    This file will be removed in future MCC releases. Use system.h instead.
+    This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.171.1
-        Device            :  dsPIC33CH512MP508
+        Device            :  dsPIC33CH512MP508S1
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.70
         MPLAB             :  MPLAB X v5.50
@@ -42,29 +42,59 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "system.h"
-#include "clock.h"
-#include "pin_manager.h"
-#include <stdint.h>
+#ifndef CLOCK_H
+#define	CLOCK_H
+
+/**
+  Section: Included Files
+*/
+
 #include <stdbool.h>
-#include "system_types.h"
-#include "reset.h"
 
-#include "tmr1.h"
-#include "reset.h"
-#include "slave_typedef.h"
-#include "slave1.h"
-#include "watchdog.h"
-#include "pwm.h"
-#include "interrupt_manager.h"
-#include "traps.h"
+#ifndef _XTAL_FREQ
+#define _XTAL_FREQ  8000000UL
+#endif
 
-#warning "This file will be removed in future MCC releases. Use system.h instead."
+#define CLOCK_SystemFrequencyGet()        (8000000UL)
 
-#endif	/* MCC_H */
+#define CLOCK_PeripheralFrequencyGet()    (CLOCK_SystemFrequencyGet() / 2)
+
+#define CLOCK_InstructionFrequencyGet()   (CLOCK_SystemFrequencyGet() / 2)
+/**
+ * @Param
+    none
+ * @Returns
+    none
+ * @Description
+    Initializes the oscillator to the default states configured in the
+ *                  MCC GUI
+ * @Example
+    CLOCK_Initialize(void);
+ */
+void CLOCK_Initialize(void);
+
+/**
+  @Summary
+    This API tells whether Auxiliary PLL is locked or not.
+
+  @Description
+    This routine returns true if Auxiliary PLL is locked else returns false.
+
+  @Param
+    None.
+
+  @Returns
+    Returns true if Auxiliary PLL is locked else returns false.
+ 
+  @Example 
+    <code>
+    bool lockStatus;
+    lockStatus = CLOCK_AuxPllLockStatusGet();
+    </code>
+*/
+bool CLOCK_AuxPllLockStatusGet();
+
+#endif	/* CLOCK_H */
 /**
  End of File
 */

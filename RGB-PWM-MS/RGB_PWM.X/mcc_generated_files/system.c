@@ -62,7 +62,7 @@
 #pragma config IESO = OFF    //Two-speed Oscillator Start-up Enable bit->Start up with user-selected oscillator source
 
 // FOSC
-#pragma config POSCMD = XT    //Primary Oscillator Mode Select bits->XT Crystal Oscillator Mode
+#pragma config POSCMD = EC    //Primary Oscillator Mode Select bits->EC (External Clock) Mode
 #pragma config OSCIOFNC = ON    //OSC2 Pin Function bit->OSC2 is general purpose digital I/O pin
 #pragma config FCKSM = CSDCMD    //Clock Switching Mode bits->Both Clock switching and Fail-safe Clock Monitor are disabled
 #pragma config PLLKEN = PLLKEN_ON    //PLL Lock Status Control->PLL lock signal will be used to disable PLL clock output if lock is lost
@@ -161,9 +161,9 @@
 #pragma config CPRD2 = MSTR    //Pin RD2 Ownership Bits->Master core owns pin.
 #pragma config CPRD3 = MSTR    //Pin RD3 Ownership Bits->Master core owns pin.
 #pragma config CPRD4 = MSTR    //Pin RD4 Ownership Bits->Master core owns pin.
-#pragma config CPRD5 = MSTR    //Pin RD5 Ownership Bits->Master core owns pin.
+#pragma config CPRD5 = SLV1    //Pin RD5 Ownership Bits->Slave 1 core owns pin.
 #pragma config CPRD6 = MSTR    //Pin RD6 Ownership Bits->Master core owns pin.
-#pragma config CPRD7 = MSTR    //Pin RD7 Ownership Bits->Master core owns pin.
+#pragma config CPRD7 = SLV1    //Pin RD7 Ownership Bits->Slave 1 core owns pin.
 #pragma config CPRD8 = MSTR    //Pin RD8 Ownership Bits->Master core owns pin.
 #pragma config CPRD9 = MSTR    //Pin RD9 Ownership Bits->Master core owns pin.
 #pragma config CPRD10 = MSTR    //Pin RD10 Ownership Bits->Master core owns pin.
@@ -203,6 +203,8 @@
 #include "system.h"
 #include "system_types.h"
 #include "tmr1.h"
+#include "slave_typedef.h"
+#include "slave1.h"
 #include "pwm.h"
 #include "interrupt_manager.h"
 #include "traps.h"
@@ -210,8 +212,9 @@
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
+    SLAVE1_Initialize();
     PWM_Initialize();
     TMR1_Initialize();
     INTERRUPT_GlobalEnable();
