@@ -76,5 +76,8 @@ you have to make following adjustment in MCC Tool:
     - https://microchipdeveloper.com/projects:16bit-adc
     - https://microchipdeveloper.com/pwr3101:pwm-operations
     - https://www.microchip.com/forums/m1181113.aspx
+* [RGB_PWM.X](RGB_PWM.X)
+  - control all 3 RGB channels of RGB LED using PWMs, duty adjustable by S1, S2, S3
+  - also show state of S1, S2, S3 on LED1 and LED2 (where S2 lights both LED1 and LED2)
 
 
