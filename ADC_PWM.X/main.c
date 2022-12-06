@@ -45,10 +45,15 @@
 #include "mcc_generated_files/mcc.h"
 #include <inttypes.h>
 
+
+static volatile uint32_t jiffies = 0;
+static volatile uint16_t counter = 0;
 static void TMR1_CallBack(void)
 {
     LED1_Toggle();
     LED2_Toggle();
+    counter++;
+    jiffies++;
 }
 
 static const ADC1_CHANNEL channel = channel_AN0;
@@ -59,14 +64,18 @@ static const uint16_t MAX_ADC = 0xFFF;
 // normally 7999 DEC (8MHz -> 1Khz divider), 0x1f3f HEX
 static uint16_t max_duty = 0;
 
+static const int APP_VERSION = 102;
+
 int main(void)
 {
     uint16_t pwm_duty_old = 0;
     uint32_t tmp = 0;
     // initialize the device
     SYSTEM_Initialize();
-    printf("1.Init\n");
+    printf("1.Init\r\n");
+    printf("Version: %d.%02d\r\n",APP_VERSION/100, APP_VERSION%100);
     max_duty = MPER; // 7999 dec for 1kHZ period see pwm.c
+    printf("max_duty=%" PRIu16 "\r\n", max_duty);
     LED1_SetHigh();
     LED2_SetHigh();
     ADC1_Enable();
@@ -74,7 +83,7 @@ int main(void)
     pwm_duty_old = MDC;
     PWM_GeneratorEnable(PWM_GENERATOR_1);
     TMR1_SetInterruptHandler(&TMR1_CallBack);
-    printf("1.Main-Loop\n");
+    printf("1.Main-Loop\r\n");
     while (1)
     {
         uint16_t pwm_duty = 0;
@@ -92,19 +101,26 @@ int main(void)
         // conversion has real range from 0 to 0xFFF (12-bit ADC)
         conversion = ADC1_ConversionResultGet(channel);
 
-        // dump current value on UART
-        printf("ADC=%" PRIu16 "\n",conversion);
         // just be sure that conversion does not overflows
         tmp = conversion & MAX_ADC;
         // pwm_duty = conversion * max_duty / MAX_ADC
         tmp = tmp * max_duty / MAX_ADC;
         pwm_duty = (uint16_t)tmp;
-        //printf("PWM_Duty=%" PRIu16 "\n",pwm_duty);
         if (pwm_duty != pwm_duty_old){
             PWM_GeneratorDisable(PWM_GENERATOR_1);
             PWM_MasterDutyCycleSet(pwm_duty);
             PWM_GeneratorEnable(PWM_GENERATOR_1);
-            pwm_duty = pwm_duty_old;
+            pwm_duty_old = pwm_duty;
+        }
+        // print values but do not flood terminal
+        if (counter >= 4){
+            printf("Uptime ticks: %" PRIu32 "\r\n", jiffies);
+            // dump current value on UART
+            printf("  ADC=%" PRIu16 " (0x%" PRIx16 ")\r\n",
+                    conversion, conversion);
+            printf("  PWM_Duty=%" PRIu16 " (0x%" PRIx16 ")\r\n",
+                    pwm_duty, pwm_duty);
+            counter = 0;
         }
     }
     return 1; 

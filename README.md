@@ -10,13 +10,18 @@ Hardware Requirements:
 - Notice dsPIC type from data-sheet:
   - [dsPIC33CH512MP508](https://www.microchip.com/en-us/product/dsPIC33CH512MP508)
 
-
 Software Requirements:
 - MPLAB X IDE `v5.50`
   > WARNING! Version v6.05 freezes right when Slave project is added to Master!
   > From that point even killing it and running again will not help - it will freeze again!
 - DFP: `dsPIC33CH-MP_DFP v1.7.194`
 - XC16 `v.20`
+
+For Demos with UART you additionally need:
+- 2nd Micro USB cable (not included with Curiosity)
+- for Windows < 10 download driver from 
+  - https://www.microchip.com/en-us/product/MCP2221A 
+  - for example: https://ww1.microchip.com/downloads/en/DeviceDoc/MCP2221_Windows_Driver_2021-02-22.zip
 
 # Curiosity board Notes
 
@@ -48,16 +53,25 @@ you have to make following adjustment in MCC Tool:
 * [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
   BLUE channel. Additionally LED1 and LED2 are blinking to show that program is alive. Uses Master core only.
   - used components:
-    - TMR1 (Timer1 module), period 250 ms - for blinkings LED1 and LED2 - complementary
+    - TMR1 (Timer1 module), period 250 ms - for blinking LED1 and LED2 - complementary
     - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
     - 5 GPIO Outputs: LED1, LED2, RGB LED
 * [ADC_PWM.X](ADC_PWM.X) - project goal: read potentiometer value using ADC, output variable
   brightness to LED1 and LED2 using PWM
   - used components
-    - TMR1 (Timer1 module), period 250 ms - for blinkings LED1 and LED2 - in sync
-    - ADC1 Input - to read Potentiometer value
-    - PWM1 Output to RB14 Blue LED (and RB15 but that is unused)
-    - UART1 Output to PC, 9600Baud, 8-bit,1-stop, no-parity
-  - now seems to work
+    - `TMR1` (Timer1 module), period 250 ms - for blinking LED1 and LED2 - in sync
+    - `ADC1` Input - to read Potentiometer value
+    - `PWM1` Output to RB14 Blue LED (and RB15 but that is unused)
+    - `UART1` Output to PC, 9600Baud, 8-bit,1-stop, no-parity
+  - inputs:
+    - potentiometer - value read via ADC and used for PWM duty cycle
+  - outputs:
+    - RGB LED, Blue channel - brightness via PWM, driven by potentiometer
+    - dump current ADC and PWM values on UART every second
+      - use 9600 Baud, 8-bit, 1 stop-bit, no-parity, no flow control on your terminal (for example Putty)
+  - resources:
+    - https://microchipdeveloper.com/projects:16bit-adc
+    - https://microchipdeveloper.com/pwr3101:pwm-operations
+    - https://www.microchip.com/forums/m1181113.aspx
 
 
