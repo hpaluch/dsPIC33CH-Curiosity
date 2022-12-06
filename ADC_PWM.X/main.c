@@ -43,6 +43,7 @@
 */
 
 #include "mcc_generated_files/mcc.h"
+#include <inttypes.h>
 
 static void TMR1_CallBack(void)
 {
@@ -50,23 +51,62 @@ static void TMR1_CallBack(void)
     LED2_Toggle();
 }
 
+static const ADC1_CHANNEL channel = channel_AN0;
+
+// ADC is 12-bit
+static const uint16_t MAX_ADC = 0xFFF;
+// need to read from MPER (Master Period), assigned in pwm.c
+// normally 7999 DEC (8MHz -> 1Khz divider), 0x1f3f HEX
+static uint16_t max_duty = 0;
+
 int main(void)
 {
+    uint16_t pwm_duty_old = 0;
+    uint32_t tmp = 0;
     // initialize the device
     SYSTEM_Initialize();
     printf("1.Init\n");
+    max_duty = MPER; // 7999 dec for 1kHZ period see pwm.c
     LED1_SetHigh();
     LED2_SetHigh();
+    ADC1_Enable();
+    ADC1_ChannelSelect(channel);
+    pwm_duty_old = MDC;
+    PWM_GeneratorEnable(PWM_GENERATOR_1);
     TMR1_SetInterruptHandler(&TMR1_CallBack);
     printf("1.Main-Loop\n");
     while (1)
     {
-        // TODO: Read ADC, Set PWM, Dump ADC/PWM on UART
-        // Add your application code
+        uint16_t pwm_duty = 0;
+        uint16_t conversion = 0;
+        int i=0;
+
+        // A/D Conversion from potentiometer
+        ADC1_SoftwareTriggerEnable();
+        //Provide Delay
+        for(i=0;i <1000;i++)
+        {
+        }
+        ADC1_SoftwareTriggerDisable();
+        while(!ADC1_IsConversionComplete(channel));
+        // conversion has real range from 0 to 0xFFF (12-bit ADC)
+        conversion = ADC1_ConversionResultGet(channel);
+
+        // dump current value on UART
+        printf("ADC=%" PRIu16 "\n",conversion);
+        // just be sure that conversion does not overflows
+        tmp = conversion & MAX_ADC;
+        // pwm_duty = conversion * max_duty / MAX_ADC
+        tmp = tmp * max_duty / MAX_ADC;
+        pwm_duty = (uint16_t)tmp;
+        //printf("PWM_Duty=%" PRIu16 "\n",pwm_duty);
+        if (pwm_duty != pwm_duty_old){
+            PWM_GeneratorDisable(PWM_GENERATOR_1);
+            PWM_MasterDutyCycleSet(pwm_duty);
+            PWM_GeneratorEnable(PWM_GENERATOR_1);
+            pwm_duty = pwm_duty_old;
+        }
     }
     return 1; 
 }
-/**
- End of File
-*/
 

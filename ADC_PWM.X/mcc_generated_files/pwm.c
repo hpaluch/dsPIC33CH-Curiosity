@@ -62,10 +62,10 @@ void PWM_Initialize (void)
     FSMINPER = 0x00;
     // MPHASE 0; 
     MPHASE = 0x00;
-    // MDC 0; 
-    MDC = 0x00;
-    // MPER 16; 
-    MPER = 0x10;
+    // MDC 4000; 
+    MDC = 0xFA0;
+    // MPER 7999; 
+    MPER = 0x1F3F;
     // LFSR 0; 
     LFSR = 0x00;
     // CTA7EN disabled; CTA8EN disabled; CTA1EN disabled; CTA2EN disabled; CTA5EN disabled; CTA6EN disabled; CTA3EN disabled; CTA4EN disabled; 
@@ -96,8 +96,8 @@ void PWM_Initialize (void)
     PWMEVTE = 0x00;
     // EVTFPOL Active-high; EVTFPGS PG1; EVTFSTRD Stretched to 8 PWM clock cycles minimum; EVTFSEL PGTRGSEL bits; EVTFOEN disabled; EVTFSYNC Not synchronized; 
     PWMEVTF = 0x00;
-    // MSTEN disabled; TRGMOD Single trigger mode; SOCS Self-trigger; UPDMOD SOC update; MPHSEL disabled; MPERSEL disabled; MDCSEL disabled; 
-    PG1CONH = 0x00;
+    // MSTEN disabled; TRGMOD Single trigger mode; SOCS Self-trigger; UPDMOD SOC update; MPHSEL disabled; MPERSEL enabled; MDCSEL enabled; 
+    PG1CONH = 0xC000;
     // TRSET disabled; UPDREQ disabled; CLEVT disabled; TRCLR disabled; CAP disabled; SEVT disabled; FFEVT disabled; UPDATE disabled; FLTEVT disabled; 
     PG1STAT = 0x00;
     // FLTDAT 0; DBDAT 0; SWAP disabled; OVRENH disabled; OVRENL disabled; OSYNC User output overrides are synchronized to the local PWM time base; CLMOD disabled; FFDAT 0; CLDAT 0; OVRDAT 0; 
@@ -148,8 +148,8 @@ void PWM_Initialize (void)
     PG1DTH = 0x00;
     
 
-    // HREN disabled; MODSEL Independent Edge; TRGCNT 1; CLKSEL Master clock; ON enabled; 
-    PG1CONL = 0x8008;
+    // HREN disabled; MODSEL Independent Edge, dual output; TRGCNT 1; CLKSEL Master clock; ON enabled; 
+    PG1CONL = 0x800A;
 }
 
 void __attribute__ ((weak)) PWM_Generator1_CallBack(void)

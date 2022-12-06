@@ -39,6 +39,10 @@ Here is brief overview of I/O peripherals on Curiosity board - excluding DC/DC c
 | LED2 red | RE1 |
 | 10kOhm pot | RA0 |
 
+NOTE: To Debug Master core on Curiosity board (with on-board Programmer/Debugger)
+you have to make following adjustment in MCC Tool:
+- System Module -> Easy Setup -> ICD -> `Communicate on PGC2 and PGD2`
+
 # Project list
 
 * [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
@@ -54,6 +58,6 @@ Here is brief overview of I/O peripherals on Curiosity board - excluding DC/DC c
     - ADC1 Input - to read Potentiometer value
     - PWM1 Output to RB14 Blue LED (and RB15 but that is unused)
     - UART1 Output to PC, 9600Baud, 8-bit,1-stop, no-parity
-  - WORK IN PROGRESS
+  - now seems to work
 
 
