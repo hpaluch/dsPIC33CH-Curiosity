@@ -203,9 +203,9 @@
 #include "system.h"
 #include "system_types.h"
 #include "tmr1.h"
+#include "pwm.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "pwm.h"
 
 void SYSTEM_Initialize(void)
 {

@@ -64,8 +64,8 @@ void PWM_Initialize (void)
     MPHASE = 0x00;
     // MDC 0; 
     MDC = 0x00;
-    // MPER 16; 
-    MPER = 0x10;
+    // MPER 7999; 
+    MPER = 0x1F3F;
     // LFSR 0; 
     LFSR = 0x00;
     // CTA7EN disabled; CTA8EN disabled; CTA1EN disabled; CTA2EN disabled; CTA5EN disabled; CTA6EN disabled; CTA3EN disabled; CTA4EN disabled; 

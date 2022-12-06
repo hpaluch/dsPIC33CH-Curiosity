@@ -96,6 +96,15 @@ int main(void)
         } else {
             LED2_SetLow();
         }
+        // handle Blue channel PWM
+        if (S3_GetValue()==0){
+            // we use global MPER (Master Period), not PG1PER
+            PG1DC = (PG1DC + MPER/50) % MPER;
+            PG1STATbits.UPDREQ = 1; // Update request set
+            while(PG1STATbits.UPDATE){
+                // NOP
+            }
+        }
     }
     return 1; 
 }

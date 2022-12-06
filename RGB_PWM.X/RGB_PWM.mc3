@@ -4052,7 +4052,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="PG_PER_DATA"/>
-         <value>PG1PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, PG2PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, PG3PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, PG4PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, </value>
+         <value>PG1PER_0.00100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, PG2PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, PG3PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, PG4PER_0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, </value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="PWM_PEVTAIISRFunction"/>
@@ -4116,7 +4116,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterFrequency"/>
-         <value>470588.23529411764705882352941176470588235294117647058823529411764705882352941176470588235294117647058823529411764705882352941176470589</value>
+         <value>1000.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterHighResolutionEnable"/>
@@ -4132,7 +4132,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterPeriod"/>
-         <value>0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</value>
+         <value>0.001</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterPeriodRangeMax"/>
@@ -4196,7 +4196,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorDutyCycle"/>
-         <value>25</value>
+         <value>0.05</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorEnable"/>
@@ -4328,11 +4328,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmMasterCalcFreq"/>
-         <value>470588.23529411764705882352941176470588235294117647058823529411764705882352941176470588235294117647058823529411764705882352941176470589</value>
+         <value>1000.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmMasterCalcPeriod"/>
-         <value>0.00000212500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</value>
+         <value>0.00100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmMasterPrimaryDutyCycle"/>
@@ -14488,7 +14488,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="MPER"/>
-         <value>16</value>
+         <value>7999</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="MPHASE"/>
@@ -15164,7 +15164,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="MPER" settingAlias="MPER"/>
-         <value>16</value>
+         <value>7999</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="MPHASE" settingAlias="MPHASE"/>
@@ -30649,20 +30649,20 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\interrupt_manager.h</file>
-         <hash>64556db0a08af50307c485436ae2eeb4a8d2cbbb316a17e8577b45dd0ee7e500</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\pwm.c</file>
-         <hash>7bb32db7e8a9aad23c3fab37dbe27411c4dae50ece0ecbdab8eeb556517aa928</hash>
+         <hash>347e685d43b30e66a26d8665ff836ac81ae0850c42f3ca7acb2f0f0ee79a0b3e</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pwm_module_features.h</file>
          <hash>40fb4d2ad82376b1a527999c995091c9da523a902b9f0d0b45df9057cb4bfd19</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\interrupt_manager.h</file>
+         <hash>64556db0a08af50307c485436ae2eeb4a8d2cbbb316a17e8577b45dd0ee7e500</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>2b4f1d9a656824960427c988052981b02a88b3832bb5514aa80737ff9ce5e947</hash>
+         <hash>05533354613e1fa422a7f3f6976af5fc46ac245d5e71d6c110b017de8dc8bf11</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
@@ -30706,7 +30706,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>4960639480a2c2d24030534d669c5ed7798f95ac10d98304c6e73021cd093bfd</hash>
+         <hash>b245d80adb082cfe972f4a8b273238fdf9a4d434a5e21f2e6f499583b3f2c46a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\traps.c</file>
