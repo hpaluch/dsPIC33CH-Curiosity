@@ -79,5 +79,10 @@ you have to make following adjustment in MCC Tool:
 * [RGB_PWM.X](RGB_PWM.X)
   - control all 3 RGB channels of RGB LED using PWMs, duty adjustable by S1, S2, S3
   - also show state of S1, S2, S3 on LED1 and LED2 (where S2 lights both LED1 and LED2)
+  - challenge - we have to use both cores because:
+    - PWM pins are not remapable: https://www.microchip.com/forums/m1186202.aspx
+    - RGB LED, BLUE Channel, pin `RP46/PWM1H/RB14` - PWM usable from Master
+    - RGB LED, GREEN Channel, pin `S1RP71/S1PWM8H/S1RD7` - PWM usable from Slave only
+    - RGB LED, RED Channel, pin `S1RP69/S1PWM6L/S1RD5` - PWM usable from Slave only
 
 
