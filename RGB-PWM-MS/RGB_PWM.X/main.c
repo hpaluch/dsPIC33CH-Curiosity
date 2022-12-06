@@ -71,16 +71,55 @@ void my_msleep(uint16_t ms)
     }
 }
 
+
+MboxPwmRed_DATA RedSend;
+MboxPwmGreen_DATA GreenSend;
+
+void WaitForSlaveDelivery(void){
+    //Issue interrupt to slave
+    SLAVE1_InterruptRequestGenerate();
+    while(!SLAVE1_IsInterruptRequestAcknowledged());
+    SLAVE1_InterruptRequestComplete();
+    while(SLAVE1_IsInterruptRequestAcknowledged());
+}
+
+
+uint16_t GetGreenValue(void)
+{
+    return GreenSend.ProtocolA[0];
+}
+
+void SendGreenToSlave(uint16_t duty)
+{
+    GreenSend.ProtocolA[0] = duty;
+    SLAVE1_MboxPwmGreenWrite(&GreenSend);
+    WaitForSlaveDelivery();
+}
+
+uint16_t GetRedValue(void)
+{
+    return RedSend.ProtocolB[0];
+}
+
+void SendRedToSlave(uint16_t duty)
+{
+    RedSend.ProtocolB[0] = duty;
+    SLAVE1_MboxPwmRedWrite(&RedSend);
+    WaitForSlaveDelivery();
+}
+
+
 int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-     //Program and enable slave 
-    SLAVE1_Program(); 
-    SLAVE1_Start(); 
-      
-    TMR1_Start();
+    RedSend.ProtocolB[0] = 0;
+    GreenSend.ProtocolA[0] = 0;
     LED1_SetHigh();
+    //Program and enable slave 
+    SLAVE1_Program(); 
+    SLAVE1_Start();      
+    TMR1_Start();
     LED2_SetHigh();
     // blink LED1 & LED2 to user for 1s to ack startup
     my_msleep(1000);
@@ -108,6 +147,16 @@ int main(void)
             while(PG1STATbits.UPDATE){
                 // NOP
             }
+        }
+        if (S2_GetValue()==0){
+            uint16_t duty = GetGreenValue();
+            duty = (duty + MPER/50) % MPER;
+            SendGreenToSlave(duty);
+        }
+        if (S1_GetValue()==0){
+            uint16_t duty = GetRedValue();
+            duty = (duty + MPER/50) % MPER;
+            SendRedToSlave(duty);
         }
     }
     return 1; 

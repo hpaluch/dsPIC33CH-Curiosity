@@ -45,18 +45,59 @@
 /**
   Section: Included Files
 */
-#include "mcc_generated_files/system.h"
+#include "mcc_generated_files/mcc.h"
+
+
+void WaitForDataFromMaster(void)
+{
+   //Wait for interrupt from master     
+   while(!MASTER_IsInterruptRequested()); 
+   MASTER_InterruptRequestAcknowledge(); 
+   while(MASTER_IsInterruptRequested()); 
+   MASTER_InterruptRequestAcknowledgeComplete();
+}
+
+uint16_t greenDuty = 0;
+uint16_t redDuty = 0;
+
+MboxPwmGreen_DATA GreenGet;
+MboxPwmRed_DATA RedGet;
 
 /*
                          Main application
  */
 int main(void)
 {
-    // initialize the device
+    // SLAVE Main
     SYSTEM_Initialize();
     while (1)
     {
-        // Add your application code
+        uint16_t duty;
+        
+        WaitForDataFromMaster();
+        // returns false if this box is empty
+        if(MASTER_MboxPwmGreenRead(&GreenGet)){
+            duty = GreenGet.ProtocolA[0];
+            if (duty != greenDuty){
+                PG8DC = duty;
+                PG8STATbits.UPDREQ = 1; // Update request set
+                while(PG8STATbits.UPDATE){
+                    // NOP
+                }
+                greenDuty = duty;
+            }
+        }
+        if(MASTER_MboxPwmRedRead(&RedGet)){
+            duty = RedGet.ProtocolB[0];
+            if (duty != greenDuty){
+                PG6DC = duty;
+                PG6STATbits.UPDREQ = 1; // Update request set
+                while(PG6STATbits.UPDATE){
+                    // NOP
+                }
+                redDuty = duty;
+            }
+        }
     }
     return 1; 
 }
