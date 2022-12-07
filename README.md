@@ -50,6 +50,11 @@ you have to make following adjustment in MCC Tool:
 
 # Project list
 
+NOTE: dsPIC33CH has actually two kinds of PWM:
+
+1. High Resolution PWM (special module available on selected PICs only)
+1. SCCP PWM (common module available on most PICs)
+
 * [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
   BLUE channel. Additionally LED1 and LED2 are blinking to show that program is alive. Uses Master core only.
   - used components:
@@ -57,6 +62,7 @@ you have to make following adjustment in MCC Tool:
     - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
     - 5 GPIO Outputs: LED1, LED2, RGB LED
 * [ADC_PWM.X](ADC_PWM.X)
+  - high resolution PWM example
   - ADC + PWM Example: read potentiometer value using ADC and set RGB LED (Blue) brightness
     using PWM
   - additionally LED1 & LED2 are synchronously blinking each second using TMR1 to show
@@ -77,10 +83,11 @@ you have to make following adjustment in MCC Tool:
     - https://microchipdeveloper.com/pwr3101:pwm-operations
     - https://www.microchip.com/forums/m1181113.aspx
 * [RGB-PWM-MS/RGB_PWM.X](RGB-PWM-MS/RGB_PWM.X)
+  - high resolution PWM example
   - control all 3 RGB channels of RGB LED using PWMs, duty adjustable by S1, S2, S3
   - also show state of S1, S2, S3 on LED1 and LED2 (where S2 lights both LED1 and LED2)
   - we have to use both cores because:
-    - PWM pins are not remapable: https://www.microchip.com/forums/m1186202.aspx
+    - HR PWM pins are not remapable: https://www.microchip.com/forums/m1186202.aspx
     - RGB LED, BLUE Channel, pin `RP46/PWM1H/RB14` - PWM usable from Master
     - RGB LED, GREEN Channel, pin `S1RP71/S1PWM8H/S1RD7` - PWM usable from Slave only
     - RGB LED, RED Channel, pin `S1RP69/S1PWM6L/S1RD5` - PWM usable from Slave only, also
@@ -88,5 +95,5 @@ you have to make following adjustment in MCC Tool:
   - how to use: press S1 to increase RED brightness, S2 to increase GREEN brightness
     and S3 to increase BLUE brightness. It will wrap on overflow. Please be aware that LEDs
     are non-linear semiconductors so the brigthness has logarithm like curve (very sensitive
-    to low values of PWM and insesitive to high values).
+    to low values change and insesitive to high values change).
 
