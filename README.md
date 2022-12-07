@@ -25,7 +25,7 @@ For Demos with UART you additionally need:
 
 # Curiosity board Notes
 
-Please note that you when you create new project you need to select:
+Please note that when you create new project you need to select:
 - Family: `16-bit DSCs (dsPIC33)`
 - Device: `dsPIC33CH512MP508` for Master Core. If you will create also Slave
   project you have to select same CPU with `S1` (Slave) suffix
