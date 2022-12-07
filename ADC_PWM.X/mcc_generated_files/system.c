@@ -202,18 +202,18 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
+#include "uart1.h"
+#include "pwm.h"
+#include "adc1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "pwm.h"
-#include "uart1.h"
 #include "tmr1.h"
-#include "adc1.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
     UART1_Initialize();
     ADC1_Initialize();
     PWM_Initialize();

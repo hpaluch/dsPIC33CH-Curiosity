@@ -77,7 +77,7 @@ int main(void)
     LED2_SetHigh();
     ADC1_Enable();
     ADC1_ChannelSelect(channel);
-    pwm_duty_old = MDC;
+    pwm_duty_old = PG1DC;
     PWM_GeneratorEnable(PWM_GENERATOR_1);
     TMR1_SetInterruptHandler(&TMR1_CallBack);
     printf("1.Main-Loop\r\n");
@@ -104,9 +104,12 @@ int main(void)
         tmp = tmp * max_duty / MAX_ADC;
         pwm_duty = (uint16_t)tmp;
         if (pwm_duty != pwm_duty_old){
-            PWM_GeneratorDisable(PWM_GENERATOR_1);
-            PWM_MasterDutyCycleSet(pwm_duty);
-            PWM_GeneratorEnable(PWM_GENERATOR_1);
+            // Pin: RP46/PWM1H/RB14 (Master core)
+            PG1DC = pwm_duty;
+            PG1STATbits.UPDREQ = 1; // Update request set
+            while(PG1STATbits.UPDATE){
+                // NOP
+            }
             pwm_duty_old = pwm_duty;
         }
         // print values but do not flood terminal

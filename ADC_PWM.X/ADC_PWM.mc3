@@ -12164,7 +12164,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorDutyCycle"/>
-         <value>0</value>
+         <value>50</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorEnable"/>
@@ -12288,7 +12288,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorUseMasterDutyCycle"/>
-         <value>enabled</value>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorUseMasterPeriod"/>
@@ -22476,7 +22476,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1CONH"/>
-         <value>49152</value>
+         <value>16384</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1CONL"/>
@@ -22484,7 +22484,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1DC"/>
-         <value>0</value>
+         <value>4000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1DCA"/>
@@ -23320,7 +23320,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1CONH" settingAlias="MDCSEL"/>
-         <value>enabled</value>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1CONH" settingAlias="MPERSEL"/>
@@ -23368,7 +23368,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1DC" settingAlias="DC1"/>
-         <value>0</value>
+         <value>4000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1DCA" settingAlias="DCA1"/>
@@ -39737,12 +39737,12 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\interrupt_manager.h</file>
-         <hash>64556db0a08af50307c485436ae2eeb4a8d2cbbb316a17e8577b45dd0ee7e500</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\pwm_module_features.h</file>
          <hash>40fb4d2ad82376b1a527999c995091c9da523a902b9f0d0b45df9057cb4bfd19</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\interrupt_manager.h</file>
+         <hash>64556db0a08af50307c485436ae2eeb4a8d2cbbb316a17e8577b45dd0ee7e500</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\adc_module_features.h</file>
@@ -39758,7 +39758,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>e43835c2b0941a754d72ca05ea195f82bb0d31bbbd490737be8be4cf47bb2fd0</hash>
+         <hash>beb617d22920d73d6cc9f927338ada7cd12c590c9be3731740050e6b777dc29b</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.h</file>
@@ -39774,19 +39774,19 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pwm.c</file>
-         <hash>f2ec0e6d4bb1a8494337f388225c27ce1c8eb7570b92fef3c98a107644e8c721</hash>
+         <hash>a84247deae3af1b8b4c84e1a4006852b482c314e628c4cdc7ac830c1c9b69b6f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>87683aeaf2731cb7b1f17a5a8538e6235450791c2f1f2c856f6b5daec919dfb3</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\reset.c</file>
-         <hash>934e0c580957fd3ae62d69564b7444cfddf66a315ddb39b0c32141c202431649</hash>
+         <hash>0d06323c8fe5b28202a5c3eb327fd938f38a56797076bf6d3b3ddfc41e804afd</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\uart1.h</file>
          <hash>e5bcfaaca7299b830b4e78a3731e664abea4edc7be7db1ba5b9faccb828e07c7</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\reset.c</file>
+         <hash>934e0c580957fd3ae62d69564b7444cfddf66a315ddb39b0c32141c202431649</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\uart1.c</file>
@@ -39838,7 +39838,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
-         <hash>69fd7b808a7adf1582dff810d4a0414976eac945d8b4cb0a28a7b3fc51584d9e</hash>
+         <hash>efd98cb5559d32c73a9f6796de9181c09cbd285656c3332dcdde621b3762b018</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\watchdog.h</file>

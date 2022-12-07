@@ -96,8 +96,8 @@ void PWM_Initialize (void)
     PWMEVTE = 0x00;
     // EVTFPOL Active-high; EVTFPGS PG1; EVTFSTRD Stretched to 8 PWM clock cycles minimum; EVTFSEL PGTRGSEL bits; EVTFOEN disabled; EVTFSYNC Not synchronized; 
     PWMEVTF = 0x00;
-    // MSTEN disabled; TRGMOD Single trigger mode; SOCS Self-trigger; UPDMOD SOC update; MPHSEL disabled; MPERSEL enabled; MDCSEL enabled; 
-    PG1CONH = 0xC000;
+    // MSTEN disabled; TRGMOD Single trigger mode; SOCS Self-trigger; UPDMOD SOC update; MPHSEL disabled; MPERSEL enabled; MDCSEL disabled; 
+    PG1CONH = 0x4000;
     // TRSET disabled; UPDREQ disabled; CLEVT disabled; TRCLR disabled; CAP disabled; SEVT disabled; FFEVT disabled; UPDATE disabled; FLTEVT disabled; 
     PG1STAT = 0x00;
     // FLTDAT 0; DBDAT 0; SWAP disabled; OVRENH disabled; OVRENL disabled; OSYNC User output overrides are synchronized to the local PWM time base; CLMOD disabled; FFDAT 0; CLDAT 0; OVRDAT 0; 
@@ -130,8 +130,8 @@ void PWM_Initialize (void)
     PG1LEBH = 0x00;
     // PHASE 0; 
     PG1PHASE = 0x00;
-    // DC 0; 
-    PG1DC = 0x00;
+    // DC 4000; 
+    PG1DC = 0xFA0;
     // DCA 0; 
     PG1DCA = 0x00;
     // PER 7999; 

@@ -52,9 +52,6 @@
 */
 void INTERRUPT_Initialize (void)
 {
-    //    TI: Timer 1
-    //    Priority: 1
-        IPC0bits.T1IP = 1;
     //    ADCAN19: ADC AN19 Convert Done
     //    Priority: 1
         IPC27bits.ADCAN19IP = 1;
@@ -70,4 +67,7 @@ void INTERRUPT_Initialize (void)
     //    ADCAN20: ADC AN20 Convert Done
     //    Priority: 1
         IPC27bits.ADCAN20IP = 1;
+    //    TI: Timer 1
+    //    Priority: 1
+        IPC0bits.T1IP = 1;
 }
