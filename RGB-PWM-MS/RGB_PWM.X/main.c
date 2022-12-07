@@ -71,6 +71,24 @@ void my_msleep(uint16_t ms)
     }
 }
 
+void FatalGreenSendFailed(void)
+{
+    LED2_SetLow();
+    while(true){
+        my_msleep(50);
+        LED1_Toggle();
+    }
+}
+
+void FatalRedSendFailed(void)
+{
+    LED1_SetLow();
+    while(true){
+        my_msleep(50);
+        LED2_Toggle();
+    }
+}
+
 
 MboxPwmRed_DATA RedSend;
 MboxPwmGreen_DATA GreenSend;
@@ -81,6 +99,14 @@ void WaitForSlaveDelivery(void){
     while(!SLAVE1_IsInterruptRequestAcknowledged());
     SLAVE1_InterruptRequestComplete();
     while(SLAVE1_IsInterruptRequestAcknowledged());
+    
+    // SLAVE should process data here
+    
+    //Wait for interrupt from slave
+    while(!SLAVE1_IsInterruptRequested());
+    SLAVE1_InterruptRequestAcknowledge();
+    while(SLAVE1_IsInterruptRequested());
+    SLAVE1_InterruptRequestAcknowledgeComplete();
 }
 
 
@@ -89,11 +115,13 @@ uint16_t GetGreenValue(void)
     return GreenSend.ProtocolA[0];
 }
 
-void SendGreenToSlave(uint16_t duty)
+bool SendGreenToSlave(uint16_t duty)
 {
     GreenSend.ProtocolA[0] = duty;
-    SLAVE1_MboxPwmGreenWrite(&GreenSend);
+    if (!SLAVE1_MboxPwmGreenWrite(&GreenSend))
+        return false;
     WaitForSlaveDelivery();
+    return true;
 }
 
 uint16_t GetRedValue(void)
@@ -101,11 +129,13 @@ uint16_t GetRedValue(void)
     return RedSend.ProtocolB[0];
 }
 
-void SendRedToSlave(uint16_t duty)
+bool SendRedToSlave(uint16_t duty)
 {
     RedSend.ProtocolB[0] = duty;
-    SLAVE1_MboxPwmRedWrite(&RedSend);
+    if (!SLAVE1_MboxPwmRedWrite(&RedSend))
+        return false;
     WaitForSlaveDelivery();
+    return true;
 }
 
 
@@ -151,12 +181,14 @@ int main(void)
         if (S2_GetValue()==0){
             uint16_t duty = GetGreenValue();
             duty = (duty + MPER/50) % MPER;
-            SendGreenToSlave(duty);
+            if (!SendGreenToSlave(duty))
+                FatalGreenSendFailed();
         }
         if (S1_GetValue()==0){
             uint16_t duty = GetRedValue();
             duty = (duty + MPER/50) % MPER;
-            SendRedToSlave(duty);
+            if (!SendRedToSlave(duty))
+                FatalRedSendFailed();
         }
     }
     return 1; 

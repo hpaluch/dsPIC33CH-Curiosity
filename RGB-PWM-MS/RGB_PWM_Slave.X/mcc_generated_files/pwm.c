@@ -64,8 +64,8 @@ void PWM_Initialize (void)
     MPHASE = 0x00;
     // MDC 0; 
     MDC = 0x00;
-    // MPER 16; 
-    MPER = 0x10;
+    // MPER 7999; 
+    MPER = 0x1F3F;
     // LFSR 0; 
     LFSR = 0x00;
     // CTA7EN disabled; CTA8EN disabled; CTA1EN disabled; CTA2EN disabled; CTA5EN disabled; CTA6EN disabled; CTA3EN disabled; CTA4EN disabled; 
@@ -164,10 +164,10 @@ void PWM_Initialize (void)
     PG6PHASE = 0x00;
     // PHASE 0; 
     PG8PHASE = 0x00;
-    // DC 2; 
-    PG6DC = 0x02;
-    // DC 1; 
-    PG8DC = 0x01;
+    // DC 0; 
+    PG6DC = 0x00;
+    // DC 0; 
+    PG8DC = 0x00;
     // DCA 0; 
     PG6DCA = 0x00;
     // DCA 0; 

@@ -57,6 +57,15 @@ void WaitForDataFromMaster(void)
    MASTER_InterruptRequestAcknowledgeComplete();
 }
 
+void AckDataFromMaster(void)
+{
+    //Issue interrupt to master
+    MASTER_InterruptRequestGenerate();
+    while(!MASTER_IsInterruptRequestAcknowledged());
+    MASTER_InterruptRequestComplete();
+    while(MASTER_IsInterruptRequestAcknowledged());
+}
+
 uint16_t greenDuty = 0;
 uint16_t redDuty = 0;
 
@@ -86,6 +95,8 @@ int main(void)
                 }
                 greenDuty = duty;
             }
+            AckDataFromMaster();
+            continue;
         }
         if(MASTER_MboxPwmRedRead(&RedGet)){
             duty = RedGet.ProtocolB[0];
@@ -97,6 +108,8 @@ int main(void)
                 }
                 redDuty = duty;
             }
+            AckDataFromMaster();
+            continue;
         }
     }
     return 1; 
