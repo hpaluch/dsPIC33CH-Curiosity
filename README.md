@@ -55,8 +55,10 @@ you have to make following adjustment in MCC Tool:
 
 NOTE: dsPIC33CH has actually two kinds of PWM:
 
-1. High Resolution PWM (special module available on selected PICs only)
+1. High-Speed (HS) PWM (special module available on selected PICs only)
 1. SCCP PWM (common module available on most PICs)
+
+List of dsPIC33CH/Curiosity projects:
 
 * [RGB_SW.X/](RGB_SW.X) - RGB LED switches demo - press S1, S2, S3 to turn on RGB LED - RED, GREEN or
   BLUE channel. Additionally LED1 and LED2 are blinking to show that program is alive. Uses Master core only.
@@ -65,7 +67,7 @@ NOTE: dsPIC33CH has actually two kinds of PWM:
     - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
     - 5 GPIO Outputs: LED1, LED2, RGB LED
 * [ADC_PWM.X](ADC_PWM.X)
-  - high resolution PWM example
+  - HS PWM example
   - ADC + PWM Example: read potentiometer value using ADC and set RGB LED (Blue) brightness
     using PWM
   - additionally LED1 & LED2 are synchronously blinking each second using TMR1 to show
@@ -86,7 +88,7 @@ NOTE: dsPIC33CH has actually two kinds of PWM:
     - https://microchipdeveloper.com/pwr3101:pwm-operations
     - https://www.microchip.com/forums/m1181113.aspx
 * [RGB-PWM-MS/RGB_PWM.X](RGB-PWM-MS/RGB_PWM.X)
-  - high resolution PWM example
+  - HS PWM example
   - control all 3 RGB channels of RGB LED using PWMs, duty adjustable by S1, S2, S3
   - also show state of S1, S2, S3 on LED1 and LED2 (where S2 lights both LED1 and LED2)
   - we have to use both cores because:
