@@ -54,11 +54,11 @@
 #include "reset.h"
 
 #include "pwm.h"
+#include "watchdog.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "master.h"
-#include "watchdog.h"
 #include "reset.h"
+#include "master.h"
 
 #warning "This file will be removed in future MCC releases. Use system.h instead."
 

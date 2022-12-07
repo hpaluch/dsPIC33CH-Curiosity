@@ -108,10 +108,10 @@ void PWM_Initialize (void)
     PG6IOCONL = 0x00;
     // FLTDAT 0; DBDAT 0; SWAP disabled; OVRENH disabled; OVRENL disabled; OSYNC User output overrides are synchronized to the local PWM time base; CLMOD disabled; FFDAT 0; CLDAT 0; OVRDAT 0; 
     PG8IOCONL = 0x00;
-    // PENL enabled; DTCMPSEL PCI Sync Logic; PMOD Complementary; POLL Active-high; PENH enabled; CAPSRC Software; POLH Active-high; 
-    PG6IOCONH = 0x0C;
-    // PENL enabled; DTCMPSEL PCI Sync Logic; PMOD Complementary; POLL Active-high; PENH enabled; CAPSRC Software; POLH Active-high; 
-    PG8IOCONH = 0x0C;
+    // PENL enabled; DTCMPSEL PCI Sync Logic; PMOD Independent; POLL Active-high; PENH enabled; CAPSRC Software; POLH Active-high; 
+    PG6IOCONH = 0x1C;
+    // PENL enabled; DTCMPSEL PCI Sync Logic; PMOD Independent; POLL Active-high; PENH enabled; CAPSRC Software; POLH Active-high; 
+    PG8IOCONH = 0x1C;
     // UPDTRG Manual; ADTR1PS 1:1; PGTRGSEL EOC event; ADTR1EN3 disabled; ADTR1EN1 disabled; ADTR1EN2 disabled; 
     PG6EVTL = 0x00;
     // UPDTRG Manual; ADTR1PS 1:1; PGTRGSEL EOC event; ADTR1EN3 disabled; ADTR1EN1 disabled; ADTR1EN2 disabled; 
@@ -198,10 +198,10 @@ void PWM_Initialize (void)
     PG8DTH = 0x00;
     
 
-    // HREN disabled; MODSEL Independent Edge; TRGCNT 1; CLKSEL Master clock; ON enabled; 
-    PG6CONL = 0x8008;
-    // HREN disabled; MODSEL Independent Edge; TRGCNT 1; CLKSEL Master clock; ON enabled; 
-    PG8CONL = 0x8008;
+    // HREN disabled; MODSEL Independent Edge, dual output; TRGCNT 1; CLKSEL Master clock; ON enabled; 
+    PG6CONL = 0x800A;
+    // HREN disabled; MODSEL Independent Edge, dual output; TRGCNT 1; CLKSEL Master clock; ON enabled; 
+    PG8CONL = 0x800A;
 }
 
 void __attribute__ ((weak)) PWM_Generator6_CallBack(void)

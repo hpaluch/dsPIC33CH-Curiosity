@@ -3792,15 +3792,15 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterOperatingMode"/>
-         <value>Independent Edge</value>
+         <value>Independent Edge, dual output</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterOutputMode"/>
-         <value>Complementary</value>
+         <value>Independent</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterPeriod"/>
-         <value>0.001</value>
+         <value>0.00100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="masterPeriodRangeMax"/>
@@ -3888,11 +3888,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorOperatingMode"/>
-         <value>Independent Edge</value>
+         <value>Independent Edge, dual output</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorOutputMode"/>
-         <value>Complementary</value>
+         <value>Independent</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorOverrideHigh"/>
@@ -24620,7 +24620,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG6CONL"/>
-         <value>32776</value>
+         <value>32778</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG6DC"/>
@@ -24664,7 +24664,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG6IOCONH"/>
-         <value>12</value>
+         <value>28</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG6IOCONL"/>
@@ -24828,7 +24828,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG8CONL"/>
-         <value>32776</value>
+         <value>32778</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG8DC"/>
@@ -24872,7 +24872,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG8IOCONH"/>
-         <value>12</value>
+         <value>28</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG8IOCONL"/>
@@ -28172,7 +28172,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG6CONL" settingAlias="MODSEL"/>
-         <value>Independent Edge</value>
+         <value>Independent Edge, dual output</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG6CONL" settingAlias="ON"/>
@@ -28404,7 +28404,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG6IOCONH" settingAlias="PMOD"/>
-         <value>Complementary</value>
+         <value>Independent</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG6IOCONH" settingAlias="POLH"/>
@@ -29284,7 +29284,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG8CONL" settingAlias="MODSEL"/>
-         <value>Independent Edge</value>
+         <value>Independent Edge, dual output</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG8CONL" settingAlias="ON"/>
@@ -29516,7 +29516,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG8IOCONH" settingAlias="PMOD"/>
-         <value>Complementary</value>
+         <value>Independent</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG8IOCONH" settingAlias="POLH"/>
@@ -41017,12 +41017,8 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\mcc.h</file>
-         <hash>13ebcc3151f7a01864f2aeb9bfca5a4c13ffa415c70208ba72e4c5d672bcfcea</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\pwm.c</file>
-         <hash>fba765a214714b068a61b57c00dfa412cb5446114ac1d20ff46152fcb12cce5d</hash>
+         <hash>692be1aed952605ca57eb56a86c00713cf1eaa5a64c897cc0f28ff7fd0c7c5f0</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pwm_module_features.h</file>
@@ -41031,6 +41027,10 @@
       <entry>
          <file>mcc_generated_files\interrupt_manager.h</file>
          <hash>ec59c3e48dcba5534bd6507f3863e9b792600d3c3ac4e8ea010d5e7bb9049da9</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\mcc.h</file>
+         <hash>55fcd52ba1e79e062042d5e185bd2dd75770eaab5858f9942a086081837011f4</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\master.h</file>
@@ -41061,48 +41061,48 @@
          <hash>0f6d66927317ccc51d355356beeeebc3c06253d5eeefde660de400a5c509493d</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\system.h</file>
-         <hash>ffca83a69ff37c0967c393d4cbdfd17e4a8d7a8263c387523f9fed02bbdf1d89</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\pin_manager.c</file>
          <hash>4c258cdf11a5b95900d70d6ab269cd730358c576dbc7d6fbbd3e1d9713b49dfe</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\system.h</file>
+         <hash>ffca83a69ff37c0967c393d4cbdfd17e4a8d7a8263c387523f9fed02bbdf1d89</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>6ca19793be0c8e280125baaa0c008bdbba0514286049fecb10deb418b0543e76</hash>
+         <hash>c666bcb7492396f9ec506ff972e83049fb3c92ea9e8d04441b8544508b3a1a45</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\traps.c</file>
          <hash>c89e143d1a59e2465e6224221a924ad6086ac179ba5082f999998407f33253a7</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\clock.h</file>
-         <hash>6f755ef9959cbd831e3c0bc62263b38bdef3a2468fec473342e24a1aefdef7a9</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\traps.h</file>
          <hash>4f0edf1072ba195fbb9036334a46648324e6e8ad385ff77b22b088c516ef8a23</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\mcc.c</file>
-         <hash>770f3904569760a38ec991319ba80972d28ed75b94ce98ff001d45a0beb6f734</hash>
+         <file>mcc_generated_files\clock.h</file>
+         <hash>6f755ef9959cbd831e3c0bc62263b38bdef3a2468fec473342e24a1aefdef7a9</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
          <hash>c71102a73db1eb3be53abbcac2595cedd5faa860c52c189e3ebfda52013e2e10</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\mcc.c</file>
+         <hash>770f3904569760a38ec991319ba80972d28ed75b94ce98ff001d45a0beb6f734</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\reset.h</file>
          <hash>6235e11030bc7e61ed88bcd89f3c92dfa2147ea900c55c52e160e19383a4d033</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\master.c</file>
-         <hash>d19931625ad8a81bfb478c02924f5b524c6f60b23ce4bc9eb22fbf680fbbef64</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\watchdog.h</file>
          <hash>89cba6359f5a2d3511023858857c9c52122e9699fa93e2cf4f9cb6117e4c7c1e</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\master.c</file>
+         <hash>d19931625ad8a81bfb478c02924f5b524c6f60b23ce4bc9eb22fbf680fbbef64</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset_types.h</file>

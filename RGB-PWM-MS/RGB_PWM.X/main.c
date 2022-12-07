@@ -47,6 +47,8 @@
 */
 #include "mcc_generated_files/mcc.h"
 
+const uint16_t PWM_INC_RATIO = 100;
+
 volatile uint16_t jiffies = 0;
 // Reserved Timer callback name - see tmr1.c
 void TMR1_CallBack(void)
@@ -172,7 +174,8 @@ int main(void)
         // handle Blue channel PWM
         if (S3_GetValue()==0){
             // we use global MPER (Master Period), not PG1PER
-            PG1DC = (PG1DC + MPER/50) % MPER;
+            // Pin: RP46/PWM1H/RB14 (Master core)
+            PG1DC = (PG1DC + MPER/PWM_INC_RATIO) % MPER;
             PG1STATbits.UPDREQ = 1; // Update request set
             while(PG1STATbits.UPDATE){
                 // NOP
@@ -180,13 +183,13 @@ int main(void)
         }
         if (S2_GetValue()==0){
             uint16_t duty = GetGreenValue();
-            duty = (duty + MPER/50) % MPER;
+            duty = (duty + MPER/PWM_INC_RATIO) % MPER;
             if (!SendGreenToSlave(duty))
                 FatalGreenSendFailed();
         }
         if (S1_GetValue()==0){
             uint16_t duty = GetRedValue();
-            duty = (duty + MPER/50) % MPER;
+            duty = (duty + MPER/PWM_INC_RATIO) % MPER;
             if (!SendRedToSlave(duty))
                 FatalRedSendFailed();
         }

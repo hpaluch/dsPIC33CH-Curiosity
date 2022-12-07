@@ -88,6 +88,7 @@ int main(void)
         if(MASTER_MboxPwmGreenRead(&GreenGet)){
             duty = GreenGet.ProtocolA[0];
             if (duty != greenDuty){
+                // Pin: S1RP71/S1PWM8H/S1RD7 (Slave core)
                 PG8DC = duty;
                 PG8STATbits.UPDREQ = 1; // Update request set
                 while(PG8STATbits.UPDATE){
@@ -101,7 +102,10 @@ int main(void)
         if(MASTER_MboxPwmRedRead(&RedGet)){
             duty = RedGet.ProtocolB[0];
             if (duty != greenDuty){
-                PG6DC = duty;
+                // Pin: S1RP69/S1PWM6L/S1RD5 (Slave core)
+                // NOTE: It is PWMxL output - thus PG6TRIGB needed,
+                //       instead of PG6DC
+                PG6TRIGB = duty;
                 PG6STATbits.UPDREQ = 1; // Update request set
                 while(PG6STATbits.UPDATE){
                     // NOP
