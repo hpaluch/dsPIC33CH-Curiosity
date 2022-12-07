@@ -16,6 +16,9 @@ Software Requirements:
   > From that point even killing it and running again will not help - it will freeze again!
 - DFP: `dsPIC33CH-MP_DFP v1.7.194`
 - XC16 `v.20`
+- recommended: Download official Curiosity board example:
+  - download: https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/SoftwareLibraries/Firmware/dspic33ch512_curiosity_demo.zip
+  - page: https://www.microchip.com/en-us/development-tool/DM330028-2
 
 For Demos with UART you additionally need:
 - 2nd Micro USB cable (not included with Curiosity)
