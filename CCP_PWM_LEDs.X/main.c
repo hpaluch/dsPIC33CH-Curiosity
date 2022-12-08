@@ -83,7 +83,10 @@ int main(void)
     {
         potValue = ReadADC();
         potValue &= 0xFFF; // ensure that ADC value is 12-bit
-        if (potValue != oldPotValue){
+        // ignore +/-1 jitter from ADC to avoid LED flickering on
+        // very low periods very brightness steps are very steep
+        if ( (potValue > oldPotValue && potValue - oldPotValue > 1)
+             || (potValue < oldPotValue && oldPotValue - potValue > 1) ){
             CCP1RB =  potValue; // where pulse ends            
             oldPotValue  = potValue;
         }
