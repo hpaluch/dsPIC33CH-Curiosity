@@ -101,4 +101,17 @@ List of dsPIC33CH/Curiosity projects:
     and S3 to increase BLUE brightness. It will wrap on overflow. Please be aware that LEDs
     are non-linear semiconductors so the brigthness has logarithm like curve (very sensitive
     to low values change and insesitive to high values change).
+* [CCP_PWM_LEDs.X/](CCP_PWM_LEDs.X/)
+  - SCPP PWM example
+  - control RGB LED (so far RED channel) based on Pontentiometer value
+  - used components
+    - `ADC1` Input - to read Potentiometer value
+    - `SCCP1-PWM` SCCP module to drive Red channel of RGB LED
+ 
+# Notes
+
+MCC Does not start without Internet Connection
+- on fresh project, when you start MCC for the 1st time it will
+  fail with error `Error getting latest version from packument`
+  if you are not online (!)
 
