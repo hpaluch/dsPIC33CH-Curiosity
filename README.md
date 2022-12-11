@@ -102,11 +102,20 @@ List of dsPIC33CH/Curiosity projects:
     are non-linear semiconductors so the brigthness has logarithm like curve (very sensitive
     to low values change and insesitive to high values change).
 * [CCP_PWM_LEDs.X/](CCP_PWM_LEDs.X/)
-  - SCPP PWM example
-  - control RGB LED (so far RED channel) based on Pontentiometer value
+  - SCCP PWM example:
+  - control RGB LED using Potentiometer
   - used components
     - `ADC1` Input - to read Potentiometer value
     - `SCCP1-PWM` SCCP module to drive Red channel of RGB LED
+    - `SCCP2-PWM` SCCP module to drive Green channel of RGB LED
+    - `SCCP3-PWM` SCCP module to drive Blue channel of RGB LED
+    - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
+    - 5 GPIO Outputs: LED1, LED2, RGB LED
+  - how to use: press and release one of those selection buttons
+    - S1 to select RED channel (LED1 will be on)
+    - or S2 to select GREEN channel (LED1 and LED2 will be on)
+    - or S3 to select BLUE channel (LED2 will be on)
+    - use Potentiometer to adjust brightness of selected RGB LED channel
  
 # Notes
 
