@@ -111,11 +111,12 @@ List of dsPIC33CH/Curiosity projects:
     - `SCCP3-PWM` SCCP module to drive Blue channel of RGB LED
     - 3 GPIO Inputs: S1, S2, S3 (on-board switches)
     - 5 GPIO Outputs: LED1, LED2, RGB LED
-  - how to use: press and release one of those selection buttons
-    - S1 to select RED channel (LED1 will be on)
-    - or S2 to select GREEN channel (LED1 and LED2 will be on)
-    - or S3 to select BLUE channel (LED2 will be on)
-    - use Potentiometer to adjust brightness of selected RGB LED channel
+  - how to use:
+    1. press and release one of those selection buttons
+       - S1 to select RED channel (LED1 will be on)
+       - or S2 to select GREEN channel (LED1 and LED2 will be on)
+       - or S3 to select BLUE channel (LED2 will be on)
+    1. use Potentiometer to adjust brightness of selected RGB LED channel
  
 # Notes
 
