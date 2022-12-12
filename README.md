@@ -120,8 +120,60 @@ List of dsPIC33CH/Curiosity projects:
  
 # Notes
 
-MCC Does not start without Internet Connection
-- on fresh project, when you start MCC for the 1st time it will
-  fail with error `Error getting latest version from packument`
-  if you are not online (!)
+## Installing MCC in air-gapped environment
+
+Still does not work...
+
+These instructions are valid for MPLAB X IDE v5.50:
+- download release notes from:
+  - https://www.microchip.com/content/dam/mchp/documents/DEV/ProductDocuments/SupportingCollateral/release_notes_mcc_5.0.3.pdf
+- download full MCC Plugin from:
+  - https://ww1.microchip.com/downloads/en/DeviceDoc/com-microchip-mcc-5.0.3.zip
+- follow instructions from  `release_notes_mcc_5.0.3.pdf`
+  section 5 page 1
+
+Additinally you need to download and install MCC Library for dsPIC33CH
+- download release notes from:
+  - https://ww1.microchip.com/downloads/en/DeviceDoc/release_notes_pic24_dspic_pic32mm_v1_171_1.pdf
+- download MCC library file from:
+  - https://ww1.microchip.com/downloads/en/DeviceDoc/pic24-dspic33-pic32mm-1.171.1.mc3lib
+- follow instructions from `release_notes_pic24_dspic_pic32mm_v1_171_1.pdf`
+  section `To install the pic24-dsPIC33-pic32mm_v1.171.1 when not connected to internet` on page 1
+  to install MCC Library 1.171.1 for dsPIC33CH
+
+Hmm, on fresh dsPIC33CH project I get:
+```
+MCC Content Manager Wizard
+The selected device is not supported by any of the content types
+  MCC Classic
+  MCC Melody
+  MPLAB Harmony
+```
+
+On dsPIC33CH project that already run MCC in past:
+```
+Error
+No available device provider
+```
+
+In desperate attempt to solve this problem I copied this file
+```
+$HOME/.mcc/libraries/.catalog-cache/mcc_libraries.xml
+```
+from `Internet connected` machine to `air-gapped` machine and at least
+for new projects it resolved problem.
+
+
+## Installing under openSUSE LEAP 15.4
+
+I installed those packages
+```bash
+# XFCE4 environment
+sudo zypper in -t pattern xfce
+# X11 Login manager
+sudo zypper in lightdm
+# These packages are required by MPLAB X IDE v5.50
+# to avoid several IDE crashes:
+sudo zypper in libgthread-2_0-0 libXss1
+```
 
