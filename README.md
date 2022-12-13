@@ -122,47 +122,40 @@ List of dsPIC33CH/Curiosity projects:
 
 ## Installing MCC in air-gapped environment
 
-Still does not work...
 
-These instructions are valid for MPLAB X IDE v5.50:
-- download release notes from:
-  - https://www.microchip.com/content/dam/mchp/documents/DEV/ProductDocuments/SupportingCollateral/release_notes_mcc_5.0.3.pdf
-- download full MCC Plugin from:
-  - https://ww1.microchip.com/downloads/en/DeviceDoc/com-microchip-mcc-5.0.3.zip
-- follow instructions from  `release_notes_mcc_5.0.3.pdf`
-  section 5 page 1
+I simply had no luck with MPLAB X IDE v5.50 + MCC 5.0.x:
+- it seems that `MCC Content Selector` simply fails to work without Internet access...
 
-Additinally you need to download and install MCC Library for dsPIC33CH
-- download release notes from:
-  - https://ww1.microchip.com/downloads/en/DeviceDoc/release_notes_pic24_dspic_pic32mm_v1_171_1.pdf
-- download MCC library file from:
-  - https://ww1.microchip.com/downloads/en/DeviceDoc/pic24-dspic33-pic32mm-1.171.1.mc3lib
-- follow instructions from `release_notes_pic24_dspic_pic32mm_v1_171_1.pdf`
-  section `To install the pic24-dsPIC33-pic32mm_v1.171.1 when not connected to internet` on page 1
-  to install MCC Library 1.171.1 for dsPIC33CH
+You can also download latest library list using:
+```bash
+curl -fL -o mcc_libraries.xml https://www.microchip.com/mcc_libraries_xml
+```
+And that way you can get working links to download mc3lib files (unlike Download archive page)
 
-Hmm, on fresh dsPIC33CH project I get:
-```
-MCC Content Manager Wizard
-The selected device is not supported by any of the content types
-  MCC Classic
-  MCC Melody
-  MPLAB Harmony
-```
 
-On dsPIC33CH project that already run MCC in past:
-```
-Error
-No available device provider
-```
-
-In desperate attempt to solve this problem I copied this file
-```
-$HOME/.mcc/libraries/.catalog-cache/mcc_libraries.xml
-```
-from `Internet connected` machine to `air-gapped` machine and at least
-for new projects it resolved problem.
-
+Finally I found that older version works in air-gapped environment:
+- download and install MPLAB v5.45 from (tested in Linux VM):
+  - https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.45-linux-installer.tar
+- download and install XC16 v2.00 (MCC 4.2.1 expects v1.50 but that requires very outdated DFP)
+  - https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc16-v2.00-full-install-linux64-installer.run 
+- download MCC plugin release notes:
+  - https://ww1.microchip.com/downloads/en/DeviceDoc/release_notes_mcc.pdf
+- download MCC plugin 4.2.1
+  - https://ww1.microchip.com/downloads/en/DeviceDoc/com-microchip-mcc-4.2.1.zip
+- follow `release_notes_mcc.pdf` to install MCC plugin into MPLAB X IDE v5.45
+- download libraries and their release notes (I use those):
+  ```bash
+  curl -fLO https://ww1.microchip.com/downloads/en/DeviceDoc/release_notes_pic10_pic12_pic16_pic18_v1_81_7.pdf
+  curl -fLO https://ww1.microchip.com/downloads/en/DeviceDoc/pic10-pic12-pic16-pic18-1.81.7.mc3lib
+  curl -fLO https://ww1.microchip.com/downloads/en/DeviceDoc/release_notes_pic24_dspic_pic32mm_v1_169.2.pdf
+  curl -fLO https://ww1.microchip.com/downloads/en/DeviceDoc/pic24-dspic33-pic32mm-1.169.2.mc3lib
+  ```
+- install both `*.mc3lib` files using Tools -> Options ->  Plugins -> MPLAB Code Configurator 4.x -> Install Library
+- download and install suitable DFP for dsPIC33CH - this one is XC16 v2.00 compatible:
+  - https://packs.download.microchip.com/Microchip.dsPIC33CH-MP_DFP.1.11.240.atpack
+  - use Tools -> Packs -> Install from Local Source
+- now create new empty project with `dsPIC33CH512MP508`  and invoke MCC Tool from Toolbar - after while
+  MCC should start properly :-)
 
 ## Installing under openSUSE LEAP 15.4
 
